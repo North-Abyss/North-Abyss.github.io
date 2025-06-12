@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuvanesh Karunakaran Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="assets/profile.jpg" alt="Profile Photo" class="profile-img">
+    <h1>Yuvanesh Karunakaran</h1>
+    <button id="theme-toggle">🌙 Toggle Theme</button>
+  </header>
+
+  <main>
+    <p>Welcome to my portfolio! Check out my work below.</p>
+    <div class="social-links">
+      <a href="https://github.com/yourusername" target="_blank">
+        <img src="assets/github-dark.png" alt="GitHub" class="icon" id="github-icon">
+      </a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank">
+        <img src="assets/linkedin-dark.png" alt="LinkedIn" class="icon" id="linkedin-icon">
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Connect with me:</p>
+    <div class="footer-icons">
+      <a href="https://github.com/yourusername" target="_blank">
+        <img src="assets/github-dark.png" alt="GitHub" class="icon" id="github-footer-icon">
+      </a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank">
+        <img src="assets/linkedin-dark.png" alt="LinkedIn" class="icon" id="linkedin-footer-icon">
+      </a>
+    </div>
+    <p>&copy; 2025 Yuvanesh Karunakaran</p>
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById("theme-toggle");
+    const html = document.documentElement;
+
+    const icons = {
+      github: {
+        dark: "assets/github-dark.png",
+        light: "assets/github-light.png"
+      },
+      linkedin: {
+        dark: "assets/linkedin-dark.png",
+        light: "assets/linkedin-light.png"
+      }
+    };
+
+    const updateIcons = (theme) => {
+      document.getElementById("github-icon").src = icons.github[theme];
+      document.getElementById("linkedin-icon").src = icons.linkedin[theme];
+      document.getElementById("github-footer-icon").src = icons.github[theme];
+      document.getElementById("linkedin-footer-icon").src = icons.linkedin[theme];
+    };
+
+    toggleButton.addEventListener("click", () => {
+      const currentTheme = html.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+      updateIcons(newTheme);
+    });
+  </script>
+</body>
+</html>
