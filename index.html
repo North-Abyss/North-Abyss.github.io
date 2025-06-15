@@ -5,31 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yuvanesh KS Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <img src="Assets/profile.png" alt="Profile Photo" class="profile-img">
-    <h1>Yuvanesh KS</h1>
-    <button id="theme-toggle">🌙 Toggle Theme</button>
+    <div class="profile-container">
+      <img src="Assets/profile.png" alt="Profile Photo" class="profile-img">
+      <div class="profile-info">
+        <h1 class="gradient-text">Yuvanesh KS</h1>
+        <p>Developer | Designer | Learner</p>
+      </div>
+    </div>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider"></span>
+      </label>
+      <span id="theme-icon">🌙</span>
+    </div>
   </header>
 
   <main>
-    <p>Welcome to my portfolio! Check out my work below.</p>
-    <div class="social-links">
+    <section class="intro">
+      <h2 class="gradient-text">Welcome to My Portfolio</h2>
+      <p>Explore my work, connect with me, and learn more about my journey.</p>
+    </section>
+
+    <section class="social-links">
       <a href="https://github.com/North-Abyss" target="_blank">
-        <img src="Assets/github-dark.png" alt="GitHub" class="icon" id="github-icon">
+        <img src="Assets/github-light.png" alt="GitHub" class="icon" id="github-icon">
+        <span class="social-name">GitHub</span>
       </a>
       <a href="https://linkedin.com/in/yuvaneshks" target="_blank">
         <img src="Assets/linkedin.png" alt="LinkedIn" class="icon" id="linkedin-icon">
+        <span class="social-name">LinkedIn</span>
       </a>
-    </div>
+    </section>
   </main>
 
   <footer>
     <p>Connect with me:</p>
     <div class="footer-icons">
       <a href="https://github.com/North-Abyss" target="_blank">
-        <img src="Assets/github-dark.png" alt="GitHub" class="icon" id="github-footer-icon">
+        <img src="Assets/github-light.png" alt="GitHub" class="icon" id="github-footer-icon">
       </a>
       <a href="https://linkedin.com/in/yuvaneshks" target="_blank">
         <img src="Assets/linkedin.png" alt="LinkedIn" class="icon" id="linkedin-footer-icon">
@@ -40,12 +58,13 @@
 
   <script>
     const toggleButton = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
     const html = document.documentElement;
 
     const icons = {
       github: {
-        dark: "Assets/github-dark.png",
-        light: "Assets/github-light.png"
+        dark: "Assets/github-light.png",
+        light: "Assets/github-dark.png"
       },
       linkedin: {
         dark: "Assets/linkedin.png",
@@ -60,11 +79,11 @@
       document.getElementById("linkedin-footer-icon").src = icons.linkedin[theme];
     };
 
-    toggleButton.addEventListener("click", () => {
-      const currentTheme = html.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "dark" : "light";
+    toggleButton.addEventListener("change", () => {
+      const newTheme = toggleButton.checked ? "light" : "dark";
       html.setAttribute("data-theme", newTheme);
       updateIcons(newTheme);
+      themeIcon.textContent = newTheme === "dark" ? "🌙" : "☀️";
     });
   </script>
 </body>
